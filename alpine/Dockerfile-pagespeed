@@ -60,28 +60,24 @@ ARG _RESTY_CONFIG_DEPS="--add-module=/tmp/modpagespeed"
 RUN apk add --no-cache --virtual .build-deps \
         build-base \
         curl \
+        bash \
+        gperf \
+        git \
+        make \
+        linux-headers \
+        python \
         gd-dev \
         geoip-dev \
         libxslt-dev \
-        linux-headers \
-        make \
         perl-dev \
         readline-dev \
         zlib-dev \
-        python \
-        icu icu-libs icu-dev \
-        bash \
-        gperf \
-        libjpeg-turbo \
-        apr \
-        apr-util \
+        icu-dev \
         apr-dev \
         apr-util-dev \
         libjpeg-turbo-dev \
         apache2-dev \
         zlib-dev \
-        gperf \
-        git \
         libpng-dev \
         libressl-dev \
         pcre-dev \
@@ -90,13 +86,16 @@ RUN apk add --no-cache --virtual .build-deps \
         geoip \
         libxslt \
         zlib \
+        icu icu-libs \
         libgcc \
-        \
-        py-setuptools \
+        pcre \
+        libressl \
+        libjpeg-turbo \
+        apr \
+        apr-util \
+        icu-libs \
     \
     && cd /tmp \
-    && curl -fSL https://www.openssl.org/source/openssl-${RESTY_OPENSSL_VERSION}.tar.gz | tar -zx \
-    && curl -fSL https://ftp.pcre.org/pub/pcre/pcre-${RESTY_PCRE_VERSION}.tar.gz | tar -zx \
     && curl -fSL https://openresty.org/download/openresty-${RESTY_VERSION}.tar.gz | tar -zx \
     && curl -fSL https://github.com/apache/incubator-pagespeed-ngx/archive/v${RESTY_PAGESPEED_VERSION}-${_RESTY_PAGESPEED_RELEASE}.tar.gz | tar -zx && mv /tmp/incubator-pagespeed-ngx-${RESTY_PAGESPEED_VERSION}-${_RESTY_PAGESPEED_RELEASE} /tmp/modpagespeed \
     && curl -fSL https://github.com/wodby/nginx-alpine-psol/releases/download/${RESTY_PAGESPEED_VERSION}/psol.tar.gz | tar -zx -C /tmp/modpagespeed \
